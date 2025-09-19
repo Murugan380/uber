@@ -14,7 +14,7 @@ const io=new Server(server,{cors:{origin:"*"}});
 
 async function run() {
   try {
-    await mongoose.connect(url, {
+    await mongoose.connect(process.env.MONGO_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true
     });
