@@ -8,7 +8,7 @@ const KEY="VanakkamdaMappla"
 
 
 //user//
-route.post('/check',auth,async(req,res)=>{
+route.post('/check',async(req,res)=>{
     try{
         const mail=(req.body.email).trim();
         let phone;
