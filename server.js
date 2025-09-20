@@ -7,7 +7,9 @@ const routeEmail=require("./signin");
 const logroute=require("./login");
 const socketbook=require("./booking");
 const prof=require("./profile")
-app.use(cors());
+app.use(cors({
+  origin: "*", 
+}));
 app.use(express.json());
 const server=http.createServer(app);
 const io=new Server(server,{cors:{origin:"*"}});
