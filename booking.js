@@ -17,7 +17,7 @@ module.exports=(io)=>{
         if(!token){
             return next(new Error("token Missing"));
         }
-        jwt.verify(token,process.env.JWT_SECRET,(err,decoded)=>{
+        jwt.verify(token,KEY,(err,decoded)=>{
             if(err){
                 return next(new Error("Invalid Token"))
             }

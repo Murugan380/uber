@@ -43,7 +43,7 @@ route.post('/signin',async(req,res)=>{
     const data={...req.body,password:hash};
     const result=await user.create(data);
     if(result){
-      const token=jwt.sign({email:req.body.email,name:result.name,id:result._id},process.env.JWT_SECRET,{expiresIn:"7d"});
+      const token=jwt.sign({email:req.body.email,phone:result.phone,name:result.name,id:result._id},KEY,{expiresIn:"7d"});
     res.send({message:"Inserted",token:token})
     }
 }
@@ -111,12 +111,13 @@ route.post('/driversignin',async(req,res)=>{
     const data={...req.body,password:hash};
     const result=await driver.create(data);
     if(result){
-      const token=jwt.sign({email:req.body.email,name:req.body.name,id:result._id},process.env.JWT_SECRET,{ expiresIn: "7d" });
+      const token=jwt.sign({email:req.body.email,phone:result.phone,name:req.body.name,id:result._id},KEY,{ expiresIn: "7d" });
     res.send({message:"Inserted",token:token})
     }
 }
 catch(err){
-    res.json({body:"There is error here"});
+  console.log(err);
+    res.json({message:"There is error here"});
 }
 });
 

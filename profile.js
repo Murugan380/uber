@@ -47,7 +47,7 @@ route.post("/userup",auth,async(req,res)=>{
             return res.send("User Not found")
         }
         else{
-            const token=jwt.sign({email:u.email,name:u.name,id:u._id,phone:u.phone},process.env.JWT_SECRET,{expiresIn:"7d"});
+            const token=jwt.sign({email:u.email,name:u.name,id:u._id,phone:u.phone},KEY,{expiresIn:"7d"});
             res.send({message:"success",token:token});
             
         }
@@ -117,7 +117,7 @@ route.post("/driverup",auth,async(req,res)=>{
             return res.send("User Not found")
         }
         else{
-            const token=jwt.sign({email:u.email,name:u.name,id:u._id,phone:u.phone},process.env.JWT_SECRET,{expiresIn:"7d"});
+            const token=jwt.sign({email:u.email,name:u.name,id:u._id,phone:u.phone},KEY,{expiresIn:"7d"});
             res.send({message:"success",token:token});
             
         }
