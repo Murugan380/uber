@@ -201,9 +201,16 @@ socket.on("disconnect", () => {
   delete connectedUser[socket.id];
   console.log("Disconnect:",socket.id)
 });
-socket.on("disconnect", () => {
+socket.on("disconnect",async() => {
+ try{
+ const sid=socketid;
+ const a= await driver.findOneAndUpdate({socketId:sid},{socketId:null},{new:true});
   delete connectedDriver[socket.id];
   console.log("Disconnect driver:",socket.id)
+ }
+ catch(err){
+  console.log(err);
+ }
 });
 });
 }
