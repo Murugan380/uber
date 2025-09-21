@@ -16,7 +16,7 @@ logroute.post('/login',async(req,res)=>{
         if(find!=null){
             const match=await bcrypt.compare(pass,find.password);
             if(match){
-            const token=jwt.sign({email:req.body.email,name:find.name,id:find._id,phone:find.phone},KEY,{expiresIn:"7d"});
+            const token=jwt.sign({email:req.body.email,name:find.name,id:find._id,phone:find.phone,role:find.role},KEY,{expiresIn:"7d"});
             res.send({message:"success",token:token});
             }
             else 
@@ -42,7 +42,7 @@ logroute.post('/driverlogin',async(req,res)=>{
         if(find!=null){
             const match=await bcrypt.compare(pass,find.password);
             if(match){
-            const token=jwt.sign({email:req.body.email,name:find.name,id:find._id,phone:find.phone},KEY,{expiresIn:"7d"});
+            const token=jwt.sign({email:req.body.email,name:find.name,id:find._id,phone:find.phone,role:find.role},KEY,{expiresIn:"7d"});
             res.send({message:"success",token:token});
             }
             else 
