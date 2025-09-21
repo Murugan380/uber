@@ -99,7 +99,6 @@ socket.on("ride:timecancel",async(data)=>{
     const driver=preride[rideid];
     io.to(driver).emit("ride:timecancled",{message:"timecancle"});
     c=true
-    delete rideoffer[rideid];
      sendToNextDriver(rideid,data);
     }
 })
