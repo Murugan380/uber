@@ -111,7 +111,7 @@ route.post('/driversignin',async(req,res)=>{
     const data={...req.body,password:hash};
     const result=await driver.create(data);
     if(result){
-      const token=jwt.sign({email:req.body.email,phone:result.phone,name:req.body.name,id:result._id},KEY,{ expiresIn: "7d" });
+      const token=jwt.sign({email:req.body.email,phone:result.phone,name:req.body.name,id:result._id,role:result.role},KEY,{ expiresIn: "7d" });
     res.send({message:"Inserted",token:token})
     }
 }
