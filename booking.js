@@ -97,7 +97,7 @@ socket.on("ride:timecancel",async(data)=>{
      const driverId=can.driver.toString();
     const userid=connectedUser[data];
     io.to(userid).emit("ride:timecancled",{message:"cancled_success"});
-    const driver=preride[driverId];
+    const driver=connectedDriver[driverId];
     io.to(driver).emit("ride:timecancled",{message:"timecancle"});
     c=true
      sendToNextDriver(rideid,data);
