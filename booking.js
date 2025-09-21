@@ -94,9 +94,10 @@ socket.on("ride:timecancel",async(data)=>{
     const can=await ride.findOneAndUpdate({rider:data,status:"accepted"},{$set:{status:"cancelled"}});
     if(can){
          const rideid=can._id.toString();
+     const driverId=can.driver.toString();
     const userid=connectedUser[data];
     io.to(userid).emit("ride:timecancled",{message:"cancled_success"});
-    const driver=preride[rideid];
+    const driver=preride[driverId];
     io.to(driver).emit("ride:timecancled",{message:"timecancle"});
     c=true
      sendToNextDriver(rideid,data);
