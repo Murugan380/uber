@@ -203,7 +203,7 @@ socket.on("disconnect", () => {
 });
 socket.on("disconnect",async() => {
  try{
- const sid=socketid;
+ const sid=socket.id;
  const a= await driver.findOneAndUpdate({socketId:sid},{socketId:null},{new:true});
   delete connectedDriver[socket.id];
   console.log("Disconnect driver:",socket.id)
